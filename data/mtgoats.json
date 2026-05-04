@@ -8,6 +8,15 @@
     }
   },
   "songs": {
+    "southwood-plantation-road": {
+      "title": "Southwood Plantation Road",
+      "album": "tallahassee",
+      "track": 3,
+      "locations": [
+        "tallahassee-fl-us"
+      ],
+      "notes": ""
+    },
     "the-first-few-desperate-hours": {
       "title": "The First Few Desperate Hours",
       "album": "tallahassee",
@@ -19,6 +28,21 @@
     }
   },
   "locations": {
+    "tallahassee-fl-us": {
+      "name": "Tallahassee",
+      "display": "Southwood Plantation Road, Southwood, Tallahassee, Leon County, Florida, 32311, United States",
+      "lat": 30.4104606,
+      "lng": -84.2100583,
+      "country": "US",
+      "admin1": "Florida",
+      "geocoded": {
+        "source": "nominatim",
+        "place_id": 279590459,
+        "raw_query": "Southwood Plantation Road",
+        "fetched_at": "2026-05-04T02:40:57.351Z"
+      },
+      "manual_override": false
+    },
     "tampa-fl-us": {
       "name": "Tampa",
       "display": "Tampa, Hillsborough County, Florida, United States",
