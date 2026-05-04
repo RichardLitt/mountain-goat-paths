@@ -1,0 +1,68 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; font-family: system-ui, -apple-system, sans-serif; color: #222; }
+body { display: flex; flex-direction: column; height: 100vh; }
+
+header {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+  background: #f7f4ee;
+}
+header h1 { margin: 0; font-size: 1.1rem; }
+header p { margin: 0.15rem 0 0; font-size: 0.85rem; color: #666; }
+header a { color: #6b4423; }
+
+main {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+#map { flex: 1; min-height: 0; }
+
+#sidebar {
+  width: 320px;
+  border-left: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+#search {
+  margin: 0.75rem;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#count {
+  margin: 0 0.75rem 0.5rem;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+#locations {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+#locations li {
+  padding: 0.55rem 0.85rem;
+  border-top: 1px solid #eee;
+  cursor: pointer;
+}
+#locations li:hover { background: #f7f4ee; }
+#locations .name { font-weight: 600; }
+#locations .meta { font-size: 0.78rem; color: #888; margin-top: 0.15rem; }
+
+.popup-songs { margin: 0.25rem 0 0; padding-left: 1.1rem; }
+.popup-songs li { margin: 0.15rem 0; }
+.popup-album { color: #888; }
+
+@media (max-width: 700px) {
+  main { flex-direction: column; }
+  #sidebar { width: 100%; height: 40vh; border-left: none; border-top: 1px solid #ddd; }
+}

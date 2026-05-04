@@ -1,0 +1,14 @@
+{
+  "name": "mountain-goat-paths",
+  "version": "0.1.0",
+  "description": "A map of places mentioned in The Mountain Goats songs.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "add": "node scripts/add.js",
+    "serve": "python3 -m http.server 8000"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

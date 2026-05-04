@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "updated": "2026-05-04",
+  "albums": {
+    "tallahassee": {
+      "title": "Tallahassee",
+      "year": 2002
+    }
+  },
+  "songs": {
+    "the-first-few-desperate-hours": {
+      "title": "The First Few Desperate Hours",
+      "album": "tallahassee",
+      "track": 1,
+      "locations": [
+        "tampa-fl-us"
+      ],
+      "notes": ""
+    }
+  },
+  "locations": {
+    "tampa-fl-us": {
+      "name": "Tampa",
+      "display": "Tampa, Hillsborough County, Florida, United States",
+      "lat": 27.9449854,
+      "lng": -82.4583107,
+      "country": "US",
+      "admin1": "Florida",
+      "geocoded": {
+        "source": "nominatim",
+        "place_id": 423012141,
+        "raw_query": "Tampa, Florida",
+        "fetched_at": "2026-05-04T02:13:42.138Z"
+      },
+      "manual_override": false
+    }
+  }
+}
