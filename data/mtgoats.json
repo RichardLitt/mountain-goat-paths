@@ -4,7 +4,10 @@
   "albums": {
     "tallahassee": {
       "title": "Tallahassee",
-      "year": 2002
+      "year": 2002,
+      "locations": [
+        "tallahassee-fl-us"
+      ]
     }
   },
   "songs": {
@@ -13,7 +16,7 @@
       "album": "tallahassee",
       "track": 3,
       "locations": [
-        "tallahassee-fl-us"
+        "southwood-plantation-road-fl-us"
       ],
       "notes": ""
     },
@@ -28,8 +31,8 @@
     }
   },
   "locations": {
-    "tallahassee-fl-us": {
-      "name": "Tallahassee",
+    "southwood-plantation-road-fl-us": {
+      "name": "Southwood Plantation Road",
       "display": "Southwood Plantation Road, Southwood, Tallahassee, Leon County, Florida, 32311, United States",
       "lat": 30.4104606,
       "lng": -84.2100583,
@@ -40,6 +43,21 @@
         "place_id": 279590459,
         "raw_query": "Southwood Plantation Road",
         "fetched_at": "2026-05-04T02:40:57.351Z"
+      },
+      "manual_override": false
+    },
+    "tallahassee-fl-us": {
+      "name": "Tallahassee",
+      "display": "Tallahassee, Leon County, Florida, United States",
+      "lat": 30.4380832,
+      "lng": -84.2809332,
+      "country": "US",
+      "admin1": "Florida",
+      "geocoded": {
+        "source": "nominatim",
+        "place_id": 303288839,
+        "raw_query": "Tallahassee, Florida",
+        "fetched_at": "2026-05-04T02:47:45.300Z"
       },
       "manual_override": false
     },

@@ -5,27 +5,36 @@ const escapeHTML = (str) => String(str ?? '').replace(/[&<>"']/g, (c) => ({
 })[c]);
 
 function buildReverseIndex(data) {
-  const locToSongs = new Map();
-  for (const [songId, song] of Object.entries(data.songs)) {
-    for (const locId of song.locations || []) {
-      if (!locToSongs.has(locId)) locToSongs.set(locId, []);
-      locToSongs.get(locId).push(songId);
-    }
+  const locToRefs = new Map();
+  const ensure = (locId) => {
+    if (!locToRefs.has(locId)) locToRefs.set(locId, { albums: [], songs: [] });
+    return locToRefs.get(locId);
+  };
+  for (const [albumId, album] of Object.entries(data.albums)) {
+    for (const locId of album.locations || []) ensure(locId).albums.push(albumId);
   }
-  return locToSongs;
+  for (const [songId, song] of Object.entries(data.songs)) {
+    for (const locId of song.locations || []) ensure(locId).songs.push(songId);
+  }
+  return locToRefs;
 }
 
-function popupHTML(loc, songIds, data) {
-  const items = songIds.map((sid) => {
+function popupHTML(loc, refs, data) {
+  const albumItems = refs.albums.map((aid) => {
+    const album = data.albums[aid];
+    const yr = album.year ? ` (${album.year})` : '';
+    return `<li><span class="popup-tag">album</span> <strong>${escapeHTML(album.title)}</strong>${yr}</li>`;
+  }).join('');
+  const songItems = refs.songs.map((sid) => {
     const song = data.songs[sid];
     const album = song.album ? data.albums[song.album] : null;
-    return `<li><strong>${escapeHTML(song.title)}</strong>${album ? ` <span class="popup-album">— ${escapeHTML(album.title)}</span>` : ''}</li>`;
+    return `<li><span class="popup-tag">song</span> <strong>${escapeHTML(song.title)}</strong>${album ? ` <span class="popup-album">— ${escapeHTML(album.title)}</span>` : ''}</li>`;
   }).join('');
   return `
     <div>
       <strong>${escapeHTML(loc.name)}</strong><br />
       <span class="popup-album">${escapeHTML(loc.display)}</span>
-      <ul class="popup-songs">${items}</ul>
+      <ul class="popup-songs">${albumItems}${songItems}</ul>
     </div>
   `;
 }
@@ -52,10 +61,10 @@ async function main() {
   const bounds = [];
 
   for (const [locId, loc] of Object.entries(data.locations)) {
-    const songIds = reverseIndex.get(locId) || [];
-    if (!songIds.length) continue;
+    const refs = reverseIndex.get(locId);
+    if (!refs || (!refs.albums.length && !refs.songs.length)) continue;
     const m = L.marker([loc.lat, loc.lng]).addTo(map);
-    m.bindPopup(popupHTML(loc, songIds, data));
+    m.bindPopup(popupHTML(loc, refs, data));
     markers.set(locId, m);
     bounds.push([loc.lat, loc.lng]);
   }
@@ -71,22 +80,31 @@ async function main() {
   const search = document.getElementById('search');
 
   const entries = Array.from(reverseIndex.entries())
-    .map(([locId, songIds]) => ({ locId, loc: data.locations[locId], songIds }))
+    .map(([locId, refs]) => ({ locId, loc: data.locations[locId], refs }))
     .filter((e) => e.loc)
     .sort((a, b) => a.loc.name.localeCompare(b.loc.name));
+
+  const totalSongs = Object.keys(data.songs).length;
+  const totalAlbums = Object.keys(data.albums).length;
 
   function render(filter = '') {
     const f = filter.trim().toLowerCase();
     const visible = f
       ? entries.filter((e) => e.loc.name.toLowerCase().includes(f) || (e.loc.display || '').toLowerCase().includes(f))
       : entries;
-    count.textContent = `${visible.length} place${visible.length === 1 ? '' : 's'} · ${Object.keys(data.songs).length} song${Object.keys(data.songs).length === 1 ? '' : 's'}`;
-    list.innerHTML = visible.map((e) => `
-      <li data-loc="${escapeHTML(e.locId)}">
-        <div class="name">${escapeHTML(e.loc.name)}</div>
-        <div class="meta">${e.songIds.length} song${e.songIds.length === 1 ? '' : 's'} · ${escapeHTML(e.loc.admin1 || e.loc.country || '')}</div>
-      </li>
-    `).join('');
+    count.textContent = `${visible.length} place${visible.length === 1 ? '' : 's'} · ${totalSongs} song${totalSongs === 1 ? '' : 's'} · ${totalAlbums} album${totalAlbums === 1 ? '' : 's'}`;
+    list.innerHTML = visible.map((e) => {
+      const parts = [];
+      if (e.refs.albums.length) parts.push(`${e.refs.albums.length} album${e.refs.albums.length === 1 ? '' : 's'}`);
+      if (e.refs.songs.length) parts.push(`${e.refs.songs.length} song${e.refs.songs.length === 1 ? '' : 's'}`);
+      const region = e.loc.admin1 || e.loc.country || '';
+      return `
+        <li data-loc="${escapeHTML(e.locId)}">
+          <div class="name">${escapeHTML(e.loc.name)}</div>
+          <div class="meta">${parts.join(' · ')}${region ? ` · ${escapeHTML(region)}` : ''}</div>
+        </li>
+      `;
+    }).join('');
   }
 
   list.addEventListener('click', (ev) => {

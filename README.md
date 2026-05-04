@@ -41,7 +41,7 @@ Push to GitHub. Repo Settings → Pages → Source: `Deploy from branch` → `ma
 
 Single normalized JSON file at `data/mtgoats.json`:
 
-- `albums` — keyed by slug, e.g. `tallahassee`.
+- `albums` — keyed by slug, e.g. `tallahassee`. May have a `locations: []` array for album-level place references (e.g. *Tallahassee* the album → Tallahassee, FL). The CLI doesn't prompt for these; hand-edit the JSON when needed.
 - `songs` — keyed by slug, with `album` (FK), `track`, `notes`, and `locations: []` (array of location slugs).
 - `locations` — keyed by slug like `tampa-fl-us`, with `name`, `display`, `lat`, `lng`, and a `geocoded` block recording how it was looked up.
 

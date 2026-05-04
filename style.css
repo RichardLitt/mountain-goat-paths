@@ -58,9 +58,21 @@ main {
 #locations .name { font-weight: 600; }
 #locations .meta { font-size: 0.78rem; color: #888; margin-top: 0.15rem; }
 
-.popup-songs { margin: 0.25rem 0 0; padding-left: 1.1rem; }
-.popup-songs li { margin: 0.15rem 0; }
+.popup-songs { margin: 0.25rem 0 0; padding-left: 0; list-style: none; }
+.popup-songs li { margin: 0.2rem 0; }
 .popup-album { color: #888; }
+.popup-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: #e8e1d4;
+  color: #6b4423;
+  vertical-align: 1px;
+  margin-right: 0.25rem;
+}
 
 @media (max-width: 700px) {
   main { flex-direction: column; }
