@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-05-04",
+  "updated": "2026-05-25",
   "albums": {
     "tallahassee": {
       "title": "Tallahassee",
@@ -8,6 +8,10 @@
       "locations": [
         "tallahassee-fl-us"
       ]
+    },
+    "we-shall-all-be-healed": {
+      "title": "We Shall All Be Healed",
+      "year": 2004
     }
   },
   "songs": {
@@ -28,9 +32,33 @@
         "tampa-fl-us"
       ],
       "notes": ""
+    },
+    "your-belgian-things": {
+      "title": "Your Belgian Things",
+      "album": "we-shall-all-be-healed",
+      "track": 6,
+      "locations": [
+        "belgie-belgique-belgien-be"
+      ],
+      "notes": "Technically not a place, but an adjective for a place."
     }
   },
   "locations": {
+    "belgie-belgique-belgien-be": {
+      "name": "België / Belgique / Belgien",
+      "display": "Belgium",
+      "lat": 50.6402809,
+      "lng": 4.6667145,
+      "country": "BE",
+      "admin1": null,
+      "geocoded": {
+        "source": "nominatim",
+        "place_id": 105543861,
+        "raw_query": "Belgium",
+        "fetched_at": "2026-05-25T03:02:00.489Z"
+      },
+      "manual_override": false
+    },
     "southwood-plantation-road-fl-us": {
       "name": "Southwood Plantation Road",
       "display": "Southwood Plantation Road, Southwood, Tallahassee, Leon County, Florida, 32311, United States",
