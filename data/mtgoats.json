@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-05-25",
+  "updated": "2026-05-26",
   "albums": {
     "tallahassee": {
       "title": "Tallahassee",
@@ -15,6 +15,25 @@
     }
   },
   "songs": {
+    "home-again-garden-grove": {
+      "title": "Home Again Garden Grove",
+      "album": "we-shall-all-be-healed",
+      "track": 8,
+      "locations": [
+        "garden-grove-ca-us"
+      ],
+      "notes": ""
+    },
+    "igs-that-ran-straightaway-into-the-water-triumph-of": {
+      "title": "igs That Ran Straightaway into the Water, Triumph Of",
+      "album": "we-shall-all-be-healed",
+      "track": 13,
+      "locations": [
+        "chino-ca-us",
+        "claremont-ca-us"
+      ],
+      "notes": ""
+    },
     "southwood-plantation-road": {
       "title": "Southwood Plantation Road",
       "album": "tallahassee",
@@ -56,6 +75,51 @@
         "place_id": 105543861,
         "raw_query": "Belgium",
         "fetched_at": "2026-05-25T03:02:00.489Z"
+      },
+      "manual_override": false
+    },
+    "chino-ca-us": {
+      "name": "Chino",
+      "display": "Chino, San Bernardino County, California, United States",
+      "lat": 34.0133561,
+      "lng": -117.690075,
+      "country": "US",
+      "admin1": "California",
+      "geocoded": {
+        "source": "nominatim",
+        "place_id": 317198364,
+        "raw_query": "Chino",
+        "fetched_at": "2026-05-26T21:01:28.974Z"
+      },
+      "manual_override": false
+    },
+    "claremont-ca-us": {
+      "name": "Claremont",
+      "display": "Claremont, Los Angeles County, California, 91711, United States",
+      "lat": 34.0966764,
+      "lng": -117.7197785,
+      "country": "US",
+      "admin1": "California",
+      "geocoded": {
+        "source": "nominatim",
+        "place_id": 323455167,
+        "raw_query": "Claremont",
+        "fetched_at": "2026-05-26T21:01:32.470Z"
+      },
+      "manual_override": false
+    },
+    "garden-grove-ca-us": {
+      "name": "Garden Grove",
+      "display": "Garden Grove, Orange County, California, United States",
+      "lat": 33.7746292,
+      "lng": -117.9463717,
+      "country": "US",
+      "admin1": "California",
+      "geocoded": {
+        "source": "nominatim",
+        "place_id": 317347706,
+        "raw_query": "Garden Grove",
+        "fetched_at": "2026-05-26T21:02:23.130Z"
       },
       "manual_override": false
     },
